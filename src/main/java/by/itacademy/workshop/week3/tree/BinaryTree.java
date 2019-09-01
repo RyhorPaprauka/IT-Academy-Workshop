@@ -1,6 +1,10 @@
 package by.itacademy.workshop.week3.tree;
 
+import by.itacademy.workshop.week4.task1.iterator.TreeIterator;
+import by.itacademy.workshop.week4.task1.strategy.Strategy;
 import lombok.Getter;
+
+import java.util.Iterator;
 
 @Getter
 public class BinaryTree<T extends Comparable<T>> {
@@ -79,5 +83,9 @@ public class BinaryTree<T extends Comparable<T>> {
         return value.compareTo(current.getValue()) < 0
                 ? containsRecursive(current.getLeft(), value)
                 : containsRecursive(current.getRight(), value);
+    }
+
+    public TreeIterator<T> iterator(Strategy strategy) {
+        return new TreeIterator<T>(this, strategy);
     }
 }
